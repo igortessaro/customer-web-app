@@ -1,0 +1,96 @@
+<h3>{{tittle}}</h3>
+<hr style="margin: 3em;" />
+<form [formGroup]="form" clrLayout="horizontal" clrForm (ngSubmit)="onSubmit()">
+    <div class="clr-row">
+        <div class="clr-col-6">
+            <clr-input-container>
+                <label>First Name</label>
+                <input clrInput placeholder="first name" name="name" formControlName="firstName" />
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-input-container>
+        </div>
+        <div class="clr-col-6">
+            <clr-input-container>
+                <label>Last Name</label>
+                <input clrInput placeholder="last name" name="name" formControlName="lastName" />
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-input-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col-6">
+            <clr-input-container>
+                <label>Phone</label>
+                <input clrInput mask="(00) 0000-00000" placeholder="(DDD) 9999-99999" name="name"
+                    formControlName="phone" />
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-input-container>
+        </div>
+        <div class="clr-col-6">
+            <clr-date-container>
+                <label>Last Purchase</label>
+                <input type="date" clrDate name="lastPurchase" formControlName="lastPurchase">
+            </clr-date-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col-6">
+            <clr-select-container>
+                <label>Gender</label>
+                <select clrSelect name="gender" formControlName="genderId">
+                    <option *ngFor="let gender of genders" [value]="gender.id">{{gender.name}}</option>
+                </select>
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-select-container>
+        </div>
+        <div class="clr-col-6">
+            <clr-select-container>
+                <label>Classification</label>
+                <select clrSelect name="classification" formControlName="classificationId">
+                    <option *ngFor="let classification of classifications" [value]="classification.id">{{classification.name}}</option>
+                </select>
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-select-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col-4">
+            <clr-select-container>
+                <label>Regions</label>
+                <select clrSelect name="region" formControlName="regionId">
+                    <option *ngFor="let region of regions" [value]="region.id">{{region.name}}</option>
+                </select>
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-select-container>
+        </div>
+        <div class="clr-col-4">
+            <clr-select-container>
+                <label>States</label>
+                <select clrSelect name="state" formControlName="stateId">
+                    <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                </select>
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-select-container>
+        </div>
+        <div class="clr-col-4">
+            <clr-select-container>
+                <label>Cities</label>
+                <select clrSelect name="city" formControlName="cityId">
+                    <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                </select>
+                <clr-control-error *clrIfError="'required'">{{msgRequiredField}}</clr-control-error>
+            </clr-select-container>
+        </div>
+    </div>
+    <hr style="margin: 3em;" />
+    <div class="clr-row">
+        <div class="clr-col-12 btn-group">
+            <button type="submit" class="btn btn-primary">
+                <clr-icon shape="check"></clr-icon>&nbsp;Save
+            </button>
+            <button type="reset" class="btn">
+                <clr-icon shape="recycle" class="is-solid"></clr-icon>&nbsp;Clear
+            </button>
+        </div>
+    </div>
+</form>

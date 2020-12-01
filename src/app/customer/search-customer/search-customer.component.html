@@ -1,0 +1,28 @@
+<h3>{{tittle}}</h3>
+<hr style="margin: 3em;" />
+<a routerLink="/customer/new" class="label label-info">
+    Create a new Customer&nbsp;
+    <clr-icon shape="plus-circle" class="is-solid"></clr-icon>
+</a>
+<clr-datagrid>
+    <clr-dg-column>Customer Id</clr-dg-column>
+    <clr-dg-column [clrDgField]="'firstName'">First Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'lastName'">Last Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'phone'">Phone</clr-dg-column>
+    <clr-dg-column [clrDgField]="'lastPurchase'">Last Purchase</clr-dg-column>
+    <clr-dg-column>Actions</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let customer of customers">
+        <clr-dg-cell>{{customer.id}}</clr-dg-cell>
+        <clr-dg-cell>{{customer.firstName}}</clr-dg-cell>
+        <clr-dg-cell>{{customer.lastName}}</clr-dg-cell>
+        <clr-dg-cell>{{customer.phone}}</clr-dg-cell>
+        <clr-dg-cell>{{customer.lastPurchase | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <a [routerLink]="['/customer', customer.id]"><clr-icon shape="pencil" class="is-solid"></clr-icon></a> &nbsp;
+            <clr-icon shape="trash" class="is-solid"></clr-icon>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{customers.length}} customers</clr-dg-footer>
+</clr-datagrid>
